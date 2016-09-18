@@ -1,0 +1,36 @@
+﻿@model UploadFile_MVC5.Models.UploadViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+@Html.ActionLink("Upload To Database", "UploadToDatabase", "Home")
+<br />
+@Html.ActionLink("Load Files From Db", "LoadFiles", "Home")
+<br />
+@Html.ActionLink("Load Files From Folder", "DisplayFilesFromFolder", "Home")
+<br />
+<h4>Upload To Folder</h4>
+
+@using (Html.BeginForm("UploadToFolder", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+    <div class="form-group  file">
+        @Html.LabelFor(m => m.Files, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Files, new { @class = "form-control", type = "file", multiple = "" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Upload" />
+        </div>
+    </div>
+}
+

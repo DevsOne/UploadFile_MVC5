@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "DisplayFilesFromFolder";
+}
+
+<br />
+@Html.ActionLink("Home", "Index", "Home")
+<br />
+@Html.ActionLink("Upload To Database", "UploadToDatabase", "Home")
+<br />
+@Html.ActionLink("Load Files From Db", "LoadFiles", "Home")
+<br />
+<h2>Load Files From Folder</h2>
+
+@foreach (var file in Model)
+{
+    var url = Url.Content("~/Content/files/" + file.Key);
+    if (file.Value == "video")
+    {
+        <video width="800" controls autoplay>
+            <source src="@url">
+        </video>
+    }
+    else if (file.Value == "image")
+    {
+        <img src="@url" width="200" height="200" />
+    }
+}
