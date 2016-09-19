@@ -146,9 +146,8 @@ namespace UploadFile_MVC5.Controllers
                     if (!directory.Exists) { directory.Create(); }
                     var filePath = HostingEnvironment.MapPath("~/Content/files/") + fileName;
                     file.SaveAs(filePath);
-                    ModelState.AddModelError("", "File Uploaded.");
-                    return RedirectToAction("Index");
                 }
+                ModelState.AddModelError("", "File Uploaded.");
             }
             return RedirectToAction("Index");
         }
