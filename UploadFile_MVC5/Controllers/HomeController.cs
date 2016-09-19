@@ -125,7 +125,6 @@ namespace UploadFile_MVC5.Controllers
                     {
                         ModelState.AddModelError("", "File exists.");
                     }
-                    return RedirectToAction("UploadToDatabase");
                 }
             }
             return RedirectToAction("UploadToDatabase");
